@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+    <style>
+        body{
+    margin: 0;
+    
+    width: 100%;
+}  
+#body{
+    background-color: #ece2d0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    
+}
+#container{
+        float: left;
+        flex-grow: 1;
+        max-width: 250px;
+        min-width: 100px;
+        height: 350px;
+         border-radius: 15px;
+        border: 2px;
+        background-color:#8b8bae ;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        
+} 
+#buttons{
+        flex-grow: 1;
+        height: 80%;
+        
+}
+#displ{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 15px 15px 0px 0px;
+    border: 0px;
+    flex-grow: 1;
+    background-color: #ffff;
+    font-family: arial,sans-serif;
+    font-size: 25px;
+    text-align: right;
+    z-index: 1;
+    
+}
+button{
+    background-color: #e78f8e;
+    border: 0px;
+    border-radius: 10px;
+    width:50px ;
+    height:55px ;
+    margin-top: 12px;
+    margin-left: 7.8px;
+    margin-right: 0px;
+    cursor: pointer;
+}
+#display{
+    position: relative;
+    flex-grow: 1;
+    height: 20%;
+}
+#cc{
+    background-color: #ecadac;
+}
+    #clear{
+        background-color: #ecadac;
+        z-index: 2;
+        position: absolute;
+        width:35px ;
+        height:40px ;
+        margin-top: 16px;
+    }
+
+    </style>
+    <script defer>function input(value){
+        document.getElementById("displ").value+=value;
+    }
+    function result() {
+        try {
+            const result = eval(document.getElementById("displ").value);
+            document.getElementById("displ").value = result;
+        } catch (error) {
+            document.getElementById("displ").value = "Error";
+        }
+    }
+    function clearDisplay() {
+        document.getElementById("displ").value ="";
+    }</script>
+</head>
+<body>
+   <div id="body">
+    <div id="container">
+        <div id="display">
+            <input type="text" id="displ" value="" readonly >
+            <button id="clear" onclick="clearDisplay()">C</button>
+        </div>
+        <div id="buttons">
+            <button onclick="input('1')">1</button>
+            <button onclick="input('2')">2</button>
+            <button onclick="input('3')">3</button>
+            <button id="cc" onclick="input('+')">+</button><br>
+            <button onclick="input('4')">4</button>
+            <button onclick="input('5')">5</button>
+            <button onclick="input('6')">6</button>
+            <button id="cc" onclick="input('-')">-</button><br>
+            <button onclick="input('7')">7</button>
+            <button onclick="input('8')">8</button>
+            <button onclick="input('9')">9</button>
+            <button id="cc" onclick="input('*')">x</button><br>
+            <button onclick="input('0')">0</button>
+            <button onclick="input('.')">.</button>
+            <button id="cc" onclick="result()">=</button>
+            <button id="cc" onclick="input('/')">/</button>
+        </div>
+    </div>
+
+   </div>
+  
+
+  
+    
+</body>
+</html>
